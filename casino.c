@@ -1,7 +1,6 @@
 /*Casino Style Games Run on the CMD*/
 #include <stdio.h>
 #include <time.h>
-#include <games.h>
 
 /*Functions*/
 
