@@ -6,6 +6,7 @@
 
 /*Prototype functions*/
 void dice(int x);
+void game_selection(int x, int y);
 
 /*Functions*/
 
@@ -20,20 +21,20 @@ void delay(double seconds) {
 
 }
 
-int welcome() {
+int welcome(int x) {
 	int choice = 0;
 
 	printf("*******************************WELCOME*******************************\n");
 	printf("Here we have a selection of games!\n");
 	delay(.5);
-	printf("Your starting balance is $20.\n");
+	printf("Your starting balance is $%d.\n", x);
 	delay(.5);
 	printf("All games have a minimum bet of $1.\n\n");
 	printf("Here's our current selection of games: \n");
 	printf("Dice [enter 1 to play]\n");
 	scanf("%d", &choice);
 
-	return choice;
+	game_selection(choice, x);
 }
 
 void game_selection(int x, int y) {
@@ -48,9 +49,11 @@ void dice(int x) {
 	int die = rand()%6+1;
 	int player_bet = 0;
 	int player_guess = 0;
-	int player_balance = x;
+	int player_balance = 0;
 	int play_again = 0;
 	int game_count = 0;
+
+	player_balance = x;
 
 	if (game_count == 0) {
 		system("cls");
@@ -120,11 +123,24 @@ void dice(int x) {
 	if (play_again == 1) {
 		dice(player_balance);
 	}
+	else
+	{
+		welcome(player_balance);
+	}
 
 }
 
+void blackjack() {
+
+}
+
+void hilo(int x) {
+	
+}
+
 int main () {
-	int selection = welcome();
-	game_selection(selection, 20);
+	int player_balance = 20;
+
+	welcome(player_balance);
     return 0;
 }
